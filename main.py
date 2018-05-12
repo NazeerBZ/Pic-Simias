@@ -10,6 +10,7 @@ from Thresholding import Thresholding
 from ArithmeticOperation import ArithmeticOperation
 from HistogramEqualization import HistogramEqualization
 from MorphologicalTransformation import MorphologicalTransformation
+from face_recognition import face_recognition
 
 class App(QtWidgets.QMainWindow, design.Ui_MainWindow):
         
@@ -39,6 +40,7 @@ class App(QtWidgets.QMainWindow, design.Ui_MainWindow):
         self.ArithmeticOperation = ArithmeticOperation()
         self.HistogramEqualization = HistogramEqualization(self.histogramEqlCheckBox, self.claheCheckBox)
         self.MorphologicalTransformation = MorphologicalTransformation(self.erosionSlider, self.dilationSlider, self.openingSlider, self.closingSlider)
+        self.face_recognition = face_recognition(self.label_image)
         
         # Connecting ToolBox widget to a function             
         self.toolBox.itemSelectionChanged.connect(self.toolList);
@@ -103,12 +105,15 @@ class App(QtWidgets.QMainWindow, design.Ui_MainWindow):
         self.closingLabel.hide()
         self.closingSlider.setValue(1)
         self.closingSlider.hide()
+        self.stopBtn.hide()
     
     def toolList(self):
-        if self.img.size :
-            selectedItem = self.toolBox.currentItem()
+        selectedItem = self.toolBox.currentItem()
+        if selectedItem.text(0) == 'Webcam' or selectedItem.text(0) == 'Video':
+            self.tools[selectedItem.text(0)](self)
+        elif self.img.size:
             for key in self.tools.keys():
-                if key == selectedItem.text(0):
+                if selectedItem.text(0) == key:
                     self.tools[key](self)
         else: print('choose an image')
 
@@ -402,6 +407,21 @@ class App(QtWidgets.QMainWindow, design.Ui_MainWindow):
         else:
             print('**Image must be grayscale**')
     
+    def doRecognitionOnWebcam(self):
+        self.hideAllWidgets()
+        self.stopBtn.show()
+        self.stopBtn.clicked.connect(lambda: self.face_recognition.stopRecognizer())
+        self.face_recognition.onWebcam()
+    
+    def doRecognitionOnVideo(self):
+        self.hideAllWidgets()
+        self.stopBtn.show()
+        self.stopBtn.clicked.connect(lambda: self.face_recognition.stopRecognizer())
+        self.face_recognition.onVideo()
+    
+    def doRecognitionOnImage(self):
+        self.hideAllWidgets()
+        self.face_recognition.onImage(self.img, self.writeImage, self.setImage)
     
     tools = {
             'Zoom': doZoom,
@@ -426,7 +446,10 @@ class App(QtWidgets.QMainWindow, design.Ui_MainWindow):
             'Erosion': doErosion,
             'Dilation': doDilation,
             'Opening': doOpening,
-            'Closing': doClosing
+            'Closing': doClosing,
+            'Webcam': doRecognitionOnWebcam,
+            'Video': doRecognitionOnVideo,
+            'Image': doRecognitionOnImage
             }
     
     

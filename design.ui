@@ -810,6 +810,19 @@
       <enum>Qt::Horizontal</enum>
      </property>
     </widget>
+    <widget class="QCommandLinkButton" name="stopBtn">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>131</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>STOP</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QTreeWidget" name="toolBox">
     <property name="geometry">
@@ -972,6 +985,26 @@
      <item>
       <property name="text">
        <string>Closing</string>
+      </property>
+     </item>
+    </item>
+    <item>
+     <property name="text">
+      <string>Face Recognition</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>Webcam</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Video</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Image</string>
       </property>
      </item>
     </item>

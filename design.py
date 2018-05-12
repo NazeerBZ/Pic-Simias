@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'E:/PROJECTS/Image-Processing/Image-Processing/design.ui'
+# Form implementation generated from reading ui file 'E:/PROJECTS/Image-Processing/Pic-Simias/design.ui'
 #
 # Created by: PyQt5 UI code generator 5.6
 #
@@ -288,6 +288,9 @@ class Ui_MainWindow(object):
         self.closingSlider.setSingleStep(2)
         self.closingSlider.setOrientation(QtCore.Qt.Horizontal)
         self.closingSlider.setObjectName("closingSlider")
+        self.stopBtn = QtWidgets.QCommandLinkButton(self.properties)
+        self.stopBtn.setGeometry(QtCore.QRect(10, 30, 131, 41))
+        self.stopBtn.setObjectName("stopBtn")
         self.toolBox = QtWidgets.QTreeWidget(self.centralwidget)
         self.toolBox.setGeometry(QtCore.QRect(10, 0, 191, 271))
         self.toolBox.setObjectName("toolBox")
@@ -318,6 +321,10 @@ class Ui_MainWindow(object):
         item_1 = QtWidgets.QTreeWidgetItem(item_0)
         item_0 = QtWidgets.QTreeWidgetItem(self.toolBox)
         item_1 = QtWidgets.QTreeWidgetItem(item_0)
+        item_1 = QtWidgets.QTreeWidgetItem(item_0)
+        item_1 = QtWidgets.QTreeWidgetItem(item_0)
+        item_1 = QtWidgets.QTreeWidgetItem(item_0)
+        item_0 = QtWidgets.QTreeWidgetItem(self.toolBox)
         item_1 = QtWidgets.QTreeWidgetItem(item_0)
         item_1 = QtWidgets.QTreeWidgetItem(item_0)
         item_1 = QtWidgets.QTreeWidgetItem(item_0)
@@ -374,6 +381,7 @@ class Ui_MainWindow(object):
         self.dilationLabel.setText(_translate("MainWindow", "Dilation"))
         self.openingLabel.setText(_translate("MainWindow", "Opening"))
         self.closingLabel.setText(_translate("MainWindow", "Closing"))
+        self.stopBtn.setText(_translate("MainWindow", "STOP"))
         self.toolBox.headerItem().setText(0, _translate("MainWindow", "Toolbox"))
         __sortingEnabled = self.toolBox.isSortingEnabled()
         self.toolBox.setSortingEnabled(False)
@@ -407,6 +415,10 @@ class Ui_MainWindow(object):
         self.toolBox.topLevelItem(6).child(1).setText(0, _translate("MainWindow", "Dilation"))
         self.toolBox.topLevelItem(6).child(2).setText(0, _translate("MainWindow", "Opening"))
         self.toolBox.topLevelItem(6).child(3).setText(0, _translate("MainWindow", "Closing"))
+        self.toolBox.topLevelItem(7).setText(0, _translate("MainWindow", "Face Recognition"))
+        self.toolBox.topLevelItem(7).child(0).setText(0, _translate("MainWindow", "Webcam"))
+        self.toolBox.topLevelItem(7).child(1).setText(0, _translate("MainWindow", "Video"))
+        self.toolBox.topLevelItem(7).child(2).setText(0, _translate("MainWindow", "Image"))
         self.toolBox.setSortingEnabled(__sortingEnabled)
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.actionOpen.setText(_translate("MainWindow", "Open"))

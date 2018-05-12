@@ -1,0 +1,1 @@
+When need increase dataset just provide images with label (folder name as label)
