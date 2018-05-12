@@ -15,7 +15,7 @@ K.set_image_dim_ordering('th')
 seed = 7
 np.random.seed(seed)
 
-subjects = ['Messi', 'Neymar', 'Suarez']
+subjects = ['Nazeer', 'Messi', 'Suarez', 'Neymar']
 
 def detect_faces(colored_img, scalerFactor=1.1):
     
